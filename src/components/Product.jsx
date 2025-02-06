@@ -1,21 +1,9 @@
-import axios from "axios";
-import toast from 'react-hot-toast';
 import { BiDollar } from "react-icons/bi";
 import { MdOutlineColorLens, MdProductionQuantityLimits } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const Product = ({ product }) => {
+const Product = ({ product, handleDeleteProduct }) => {
 
-    const handleDeleteProduct = async (id) => {
-
-        try {
-            await axios.delete(`${import.meta.env.VITE_API_URL}/product/${id}`)
-            toast.success("Product deleted successfully");
-
-        } catch (err) {
-            toast.error("Error deleting product: " + err.message)
-        }
-    }
 
     return (
         <div className="p-4 bg-white shadow-md rounded-md flex flex-col justify-between">
