@@ -28,13 +28,14 @@ const AddProducts = () => {
         }
 
         try {
-            const result = await axios.post(`${import.meta.env.VITE_API_URL}/product`, newProduct);
+            const result = await axios.post(`${import.meta.env.VITE_API_URL}/add-product`, newProduct);
             toast.success("Product created successfully");
-            navigate('/products');
+            navigate('/my-products');
         } catch (err) {
             toast.error("Failed to create product. Please try again.");
         }
     }
+    
 
     return (
         <div>
