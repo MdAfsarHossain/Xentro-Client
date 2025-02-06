@@ -34,7 +34,6 @@ const AddProducts = () => {
         } catch (err) {
             toast.error("Failed to create product. Please try again.");
         }
-
     }
 
     return (
