@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import toast from 'react-hot-toast';
 import LoadingSpinner from "../components/LoadingSpinner";
 import Product from "../components/Product";
 
@@ -9,6 +9,7 @@ const Products = () => {
 
     const [searchText, setSearchText] = useState("");
     const [sortType, setSortType] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
 
 
     // List of Sorting types
@@ -18,16 +19,28 @@ const Products = () => {
         "DESC",
     ]
 
-    const { data: products = [], isLoading, refetch } = useQuery({
-        queryKey: ['products'],
-        queryFn: async () => {
-            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/products?search=${searchText}&sort=${sortType}`);
-            return data;
-        }
-    })
+    // const { data: products = [], isLoading, refetch } = useQuery({
+    //     queryKey: ['products'],
+    //     queryFn: async () => {
+    //         const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/products?search=${searchText}&sort=${sortType}`);
+    //         return data;
+    //     }
+    // })
+
+    const [displayProduct, setDisplayedProduct] = useState([]);
+    // console.log(displayProduct);
 
     useEffect(() => {
-        refetch();
+        // setDisplayedProduct(products);
+        // refetch();
+        setIsLoading(true);
+        const getProductData = async () => {
+            setIsLoading(true);
+            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/products?search=${searchText}&sort=${sortType}`);
+            setDisplayedProduct(data);
+            setIsLoading(false);
+        }
+        getProductData()
     }, [searchText, sortType])
 
     // Handle Search Button
@@ -39,6 +52,22 @@ const Products = () => {
     const handleChange = (event) => {
         setSortType(event.target.value);
     };
+
+    // Handle Delete Product
+    const handleDeleteProduct = async (id) => {
+
+        try {
+            // await axios.delete(`${import.meta.env.VITE_API_URL}/product/${id}`)
+            const productFilter = displayProduct.filter((product) => product.id !== id);
+            // setProducts(productFilter);
+            setDisplayedProduct(productFilter)
+            // console.log(productFilter)
+            toast.success("Product deleted successfully");
+
+        } catch (err) {
+            toast.error("Error deleting product: " + err.message)
+        }
+    }
 
     if (isLoading) return <LoadingSpinner />;
 
@@ -105,7 +134,7 @@ const Products = () => {
             </div>
 
             {
-                products?.length === 0 && (
+                displayProduct?.length === 0 && (
                     <div className="text-center flex flex-col h-52 justify-center items-center text-5xl text-red-500 capitalize">
                         <p>No product found.</p>
                     </div>
@@ -113,10 +142,11 @@ const Products = () => {
             }
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-8 mt-7 mb-16">
-                {products?.map((product) => (
+                {displayProduct?.map((product) => (
                     <Product
                         key={product?.id}
                         product={product}
+                        handleDeleteProduct={handleDeleteProduct}
                     />
                 ))}
             </div>
