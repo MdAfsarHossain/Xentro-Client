@@ -55,6 +55,6 @@
 - `Email:` afsar@gmail.com
 - `Password:` Afsar12345
 
-### [Server Site Code]()
+### [Server Site Code](https://github.com/MdAfsarHossain/Xentro-Server)
 
-### [Website Preview](https://github.com/MdAfsarHossain/Xentro-Client/blob/main/xentro-info-tech.png)
+### [Website Preview](https://raw.githubusercontent.com/MdAfsarHossain/Xentro-Client/refs/heads/main/xentro-info-tech.png)
