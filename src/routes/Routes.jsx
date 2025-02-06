@@ -4,6 +4,7 @@ import AddProducts from "../pages/AddProducts";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
+import MyProducts from "../pages/MyProducts";
 import Products from "../pages/Products";
 import Profile from "../pages/Profile";
 import Register from "../pages/Register";
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
                 path: 'profile',
                 // element: <Profile />
                 element: <PrivateRoute><Profile /></PrivateRoute>
+            },
+            {
+                path: 'my-products',
+                element: <MyProducts />
             },
             {
                 path: 'login',
