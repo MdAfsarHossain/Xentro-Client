@@ -48,12 +48,63 @@
 - `react-spinners`: ^0.15.0
 - `tailwindcss`: ^4.0.3
 
-### [Live Link](https://xentro-task.web.app)
+## [Installation]()
+
+- Run `npm install` to install project Dependencies
+
+## [How to Run]()
+
+1. Clone the repository
+
+```js
+git clone https://github.com/MdAfsarHossain/Xentro-Server.git
+cd xentro-client
+```
+
+2. Install dependencies using
+
+```js
+npm install
+```
+
+3. Setup Environment Variables
+
+- Create `.env.local` in the root directory.
+- Add `VITE_API_URL` variable and put your server url here.
+- Create a firebase project and add config here firebase config will look like
+
+```js
+VITE_apiKey;
+VITE_authDomain;
+VITE_projectId;
+VITE_storageBucket;
+VITE_messagingSenderId;
+VITE_appId;
+```
+
+4. Run the website to locally
+
+```js
+npm run dev
+```
+
+5. Open the website in your local browser http://localhost:5173
+
+## [Deployment]()
+
+- Hosted on Netlify or Vercel for a fast and reliable experience.
+- Firebase Authentication requires authorized domains to ensure secure access.
+
+## [Contributions]()
+
+- Contributions are welcome! Fork this repository, make your changes, and submit a pull request.
 
 ### [User Login Info]()
 
 - `Email:` afsar@gmail.com
 - `Password:` Afsar12345
+
+### [Live Link](https://xentro-task.web.app)
 
 ### [Server Site Code](https://github.com/MdAfsarHossain/Xentro-Server)
 
