@@ -48,7 +48,7 @@ const MyProducts = () => {
         <div>
             {/* <h1>My Products: {myProducts?.length}</h1> */}
             <Helmet>
-                <title>Xentro | Mys</title>
+                <title>Xentro | My Products</title>
             </Helmet>
 
             <div className=" flex justify-center items-center">
